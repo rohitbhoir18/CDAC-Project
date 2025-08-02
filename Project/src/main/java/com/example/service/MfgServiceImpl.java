@@ -18,5 +18,10 @@ public class MfgServiceImpl implements MfgService
 	{		
 		return repository.findAll();
 	}
+	
+	@Override
+    public List<MfgMaster> getBySegmentId(int segId) {
+        return repository.findMfgBySegmentId(segId); 
+    }
 
 }

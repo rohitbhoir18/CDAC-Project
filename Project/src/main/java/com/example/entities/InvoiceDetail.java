@@ -1,5 +1,7 @@
 package com.example.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -31,6 +33,7 @@ public class InvoiceDetail {
 
 	@ManyToOne
     @JoinColumn(name = "comp_id")
+	@JsonIgnore
 	public ComponentMaster getComponent() {
 		return component;
 	}

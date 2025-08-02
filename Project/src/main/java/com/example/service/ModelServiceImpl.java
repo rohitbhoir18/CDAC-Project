@@ -13,18 +13,22 @@ public class ModelServiceImpl implements ModelService
 {
 	@Autowired
 	private ModelRepository repository;
-	
-	@Override
-	public List<ModelMaster> getAll()
-	{
-		return repository.findAll();
-	}
 
 	@Override
-	public ModelMaster getById(int id) 
+	public List<ModelMaster> getByMfgId(int id) 
 	{
-		return repository.findById(id).orElse(null);
+		return repository.findModelsByMfgId(id);
 	}
 	
-
+	@Override
+	public List<ModelMaster> getBySegIdandMfgId(int segid,int mfgid) 
+	{
+		return repository.findModelsBySegIdandMfgId(segid, mfgid);
+	}
+	
+//	@Override
+//	public ModelMaster getMinQtyBySegId(int segid) 
+//	{
+//		return repository.findMinQtyBySegId(segid);
+//	}
 }

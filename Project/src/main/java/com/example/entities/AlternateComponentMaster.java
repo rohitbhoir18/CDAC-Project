@@ -2,6 +2,9 @@ package com.example.entities;
 
 import java.math.BigDecimal;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -24,6 +27,7 @@ public class AlternateComponentMaster {
 	
 	@ManyToOne
 	@JoinColumn(name = "model_id")
+	@JsonIgnore
 	public ModelMaster getModel() {
 		return model;
 	}
@@ -33,6 +37,7 @@ public class AlternateComponentMaster {
 	
 	@ManyToOne
     @JoinColumn(name = "comp_id")
+	@JsonIgnore
 	public ComponentMaster getComponent() {
 		return component;
 	}

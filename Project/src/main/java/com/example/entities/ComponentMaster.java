@@ -2,6 +2,8 @@ package com.example.entities;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -31,6 +33,7 @@ public class ComponentMaster {
 	}
 	
     @OneToMany(mappedBy = "component")
+    @JsonIgnore
 	public Set<VehicleDetail> getVehicleDetails() {
 		return vehicleDetails;
 	}
@@ -39,6 +42,7 @@ public class ComponentMaster {
 	}
 	
 	@OneToMany(mappedBy = "component")
+	@JsonIgnore
 	public Set<AlternateComponentMaster> getComponentAlternates() {
 		return componentAlternates;
 	}
@@ -55,6 +59,7 @@ public class ComponentMaster {
 	}
 	
 	@OneToMany(mappedBy = "component")
+	@JsonIgnore
 	public Set<InvoiceDetail> getInvoiceDetails() {
 		return invoiceDetails;
 	}

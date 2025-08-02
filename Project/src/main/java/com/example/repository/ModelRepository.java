@@ -10,9 +10,12 @@ import com.example.entities.ModelMaster;
 
 public interface ModelRepository extends JpaRepository<ModelMaster, Integer>
 {
-	@Query(value = "SELECT * FROM model_master WHERE mfg_id = :mfgId", nativeQuery = true)
-    List<ModelMaster> findModelsByManufacturerId(@Param("mfgId") Integer mfgId);
+	@Query(value="select * FROM model_master WHERE seg_id = :segId AND mfg_id = :mfgId",nativeQuery = true)
+	List<ModelMaster> findModelsBySegIdandMfgId(@Param("segId") Integer segId, @Param("mfgId") Integer mfgId);
 
-    @Query(value = "SELECT * FROM model_master WHERE seg_id = :segId", nativeQuery = true)
-    List<ModelMaster> findModelsBySegmentId(@Param("segId") Integer segId);
+	@Query(value="select * from model_master where mfg_id =:mfgId",nativeQuery = true)
+	List<ModelMaster> findModelsByMfgId(@Param("mfgId") Integer mfgId);
+	
+//	@Query(value="select min_qty from model_master where seg_id=:segId",nativeQuery = true)
+//	ModelMaster findMinQtyBySegId(@Param("segId") int segId);
 }

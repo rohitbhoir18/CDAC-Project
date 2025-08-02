@@ -3,6 +3,9 @@ package com.example.entities;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -74,6 +77,7 @@ public class ModelMaster {
 	}
 
 	@OneToMany(mappedBy = "model", cascade = CascadeType.ALL)
+	@JsonIgnore
 	public Set<VehicleDetail> getVehicleDetails() {
 		return vehicleDetails;
 	}
@@ -83,6 +87,7 @@ public class ModelMaster {
 	}
 
     @OneToOne(mappedBy = "model", cascade = CascadeType.ALL)
+    @JsonIgnore
 	public InvoiceHeader getInvoices() {
 		return invoices;
 	}
@@ -92,7 +97,8 @@ public class ModelMaster {
 	}
 
     @OneToMany(mappedBy = "model", cascade = CascadeType.ALL)
-	public Set<AlternateComponentMaster> getAlternates() {
+    @JsonIgnore
+    public Set<AlternateComponentMaster> getAlternates() {
 		return alternates;
 	}
 

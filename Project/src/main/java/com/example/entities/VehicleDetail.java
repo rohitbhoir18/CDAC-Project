@@ -1,5 +1,8 @@
 package com.example.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -30,6 +33,7 @@ public class VehicleDetail {
 
 	@ManyToOne
 	@JoinColumn(name = "model_id")
+	@JsonIgnore
 	public ModelMaster getModel() {
 		return model;
 	}
@@ -40,6 +44,7 @@ public class VehicleDetail {
 
 	@ManyToOne
     @JoinColumn(name = "comp_id")
+	@JsonIgnore
 	public ComponentMaster getComponent() {
 		return component;
 	}

@@ -7,4 +7,6 @@ import com.example.entities.MfgMaster;
 public interface MfgService 
 {
 	public List<MfgMaster> getAll();
+	
+	List<MfgMaster> getBySegmentId(int segId);
 }

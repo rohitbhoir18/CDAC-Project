@@ -17,13 +17,18 @@ public class ModelMasterController {
     @Autowired
     private ModelService service;
 
-    @GetMapping
-    public List<ModelMaster> getAllModels() {
-        return service.getAll();
+    @GetMapping("/segmfg/{segid}/{mfgid}")
+    public List<ModelMaster> getModelsBySegidandMfgid(@PathVariable Integer segid , @PathVariable Integer mfgid) {
+        return service.getBySegIdandMfgId(segid, mfgid);
     }
 
-    @GetMapping("/{id}")
-    public ModelMaster getById(@PathVariable Integer id) {
-        return service.getById(id);
+    @GetMapping("/mfg/{mfgid}")
+    public List<ModelMaster> getByMfgId(@PathVariable Integer mfgid) {
+        return service.getByMfgId(mfgid);
     }
+    
+//    @GetMapping("/minqty/{segid}")
+//    public ModelMaster getMinQtyBySegId(@PathVariable int segid) {
+//        return service.getMinQtyBySegId(segid);
+//    }
 }

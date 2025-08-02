@@ -10,9 +10,7 @@ import com.example.entities.MfgMaster;
 
 public interface MfgRepository extends JpaRepository<MfgMaster, Integer>
 {
-	@Query(value = "SELECT * FROM mfg_master WHERE mfg_id = :mfgId", nativeQuery = true)
-    MfgMaster findManufacturerById(@Param("mfgId") Integer mfgId);
+	@Query("SELECT s.manufacturer FROM SegMfgMaster s WHERE s.segment.segId = :segId")
+	List<MfgMaster> findMfgBySegmentId(@Param("segId") int segId);
 
-    @Query(value = "SELECT * FROM mfg_master WHERE seg_id = :segId", nativeQuery = true)
-    List<MfgMaster> findManufacturersBySegmentId(@Param("segId") Integer segId);
 }

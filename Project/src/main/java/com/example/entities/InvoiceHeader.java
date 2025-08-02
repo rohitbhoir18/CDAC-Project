@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -38,6 +40,7 @@ public class InvoiceHeader {
 
 	@ManyToOne
     @JoinColumn(name = "model_id")
+	@JsonIgnore
 	public ModelMaster getModel() {
 		return model;
 	}
